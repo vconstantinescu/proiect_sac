@@ -8,6 +8,7 @@
 
   function RegisterController($scope, $state) {
 
+    $scope.cancel = function () { $state.go("login");}
 
 
 
