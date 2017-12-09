@@ -1,1 +1,11 @@
 /* Empty. Add your own CSS if you like */
+.logo {
+  padding-top: 3em;
+  height: 30vh;
+  width: auto;
+  margin: auto;
+  display: block;
+}
+.bg-style {
+  background: azure;
+}
