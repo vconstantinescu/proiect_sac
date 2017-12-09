@@ -1,24 +1,24 @@
 #!flask/bin/python
 from flask import Flask, jsonify, request
-from pymongo import MongoClient
-from bson.objectid import ObjectId
+from flask_pymongo import PyMongo, ObjectId
 
 app = Flask(__name__)
+app.config['MONGO_DBNAME'] = 'sac'
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/sac'
 
-client = MongoClient('localhost:27017')
-db = client.sac
+mongo = PyMongo(app)
 
 
 @app.route('/api/register', methods=['POST'])
 def register():
-    table = db.users
-    user_id = table.insert({
+
+    user_id = mongo.db.users.insert({
         "name": request.json['name'],
         "email": request.json['email'],
         "password": request.json['password']
     })
 
-    user = table.find_one({'_id': ObjectId(str(user_id))})
+    user = mongo.db.users.find_one({'_id': ObjectId(str(user_id))})
     user['_id'] = str(user['_id'])
 
     return jsonify({"success": True, "user": user})
@@ -26,7 +26,7 @@ def register():
 
 @app.route('/api/login', methods=['POST'])
 def login():
-    user = db.users.find({
+    user = mongo.db.users.find({
         'email': request.json['email'],
         'password': request.json['password']
     })
