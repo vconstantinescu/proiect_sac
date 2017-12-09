@@ -16,7 +16,13 @@ angular.module("savingsApp", ["ionic"])
   $stateProvider
     .state('login', {
       url: "/login",
-      templateUrl: "app/login/login.html"
+      templateUrl: "app/login/login.html",
+      controller: 'LoginController'
+    })
+    .state('register', {
+      url: "/register",
+      templateUrl: "app/register/register.html",
+      controller: 'RegisterController'
     })
     .state('home', {
       url: "/home",
