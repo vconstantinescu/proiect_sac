@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "173797669618",
+    "project_id": "firebase-savings"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173797669618:android:27d689d63f1b7a06",
+        "android_client_info": {
+          "package_name": "com.google.samples.quickstart.signin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173797669618-n0cbagpprbuic6l0irsjv4jj8uoakb4a.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "173797669618-dbre22rr18jts2jp366tr8ev2ug57845.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.samples.quickstart.signin",
+            "certificate_hash": "83472e0b9c035f5b6322e3429192ef91626e68b6"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbARdiQ3NtthhgpKoqk5wsO6lPAISxSBE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

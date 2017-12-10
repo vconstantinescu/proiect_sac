@@ -33,5 +33,5 @@ angular.module("savingsApp", ["ionic"])
         url: "/app",
         templateUrl: "app/layout/menu-layout.html"
       });
-  $urlRouterProvider.otherwise("/app");
+  $urlRouterProvider.otherwise("/login");
 });
