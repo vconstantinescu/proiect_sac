@@ -2,18 +2,14 @@
   'use strict';
   angular
     .module('savingsApp')
-    .controller('HomeController', HomeController);
+    .controller('ReceiptController', HomeController);
 
   HomeController.$inject = ['$scope','$state'];
 
   function HomeController($scope, $state) {
 
-    $scope.receipt = function () {
-      $state.go("receipt");
-    }
 
 
 
   }
 })();
-

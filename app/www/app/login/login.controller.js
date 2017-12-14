@@ -71,10 +71,11 @@
           });
 
           $ionicLoading.hide();
-          $state.go('home');
         },
         function (msg) {
           $ionicLoading.hide();
+          // todo: remove this when implementing
+          $state.go('home');
         }
       );
     };

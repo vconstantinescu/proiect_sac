@@ -1,12 +1,10 @@
-<ion-nav-bar class="bar-balanced">
-  <h1 class="title">Savings Application</h1>
-</ion-nav-bar>
+<ion-view view-title="Home" name="home-view" class="bg-style">
+  <ion-content class="padding">
+    <img class="logo" src="img/logo2.png" style="padding-bottom: 22px">
 
-<ion-tabs class="tabs-energized tabs-icon-top">
-  <ion-tab title="test" icon="ion-home" href="#">
-    <ion-view></ion-view>
-  </ion-tab>
-  <ion-tab title="test" icon="ion-star" href="#">
-    <ion-view></ion-view>
-  </ion-tab>
-</ion-tabs>
+    <button class="button button-block button-calm" ng-click="">Add expenses</button>
+    <button class="button button-block button-royal" ng-click="receipt()">Scan Receipt</button>
+    <button class="button button-block button-calm" ng-click="">Statistics</button>
+    <button class="button button-block button-royal" ng-click="">History</button>
+  </ion-content>
+</ion-view>

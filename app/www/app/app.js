@@ -29,6 +29,11 @@ angular.module("savingsApp", ["ionic"])
       templateUrl: "app/home/home.html",
       controller: 'HomeController'
     })
+    .state('receipt', {
+      url: "/receipt",
+      templateUrl: "app/receipt/receipt.html",
+      controller: 'ReceiptController'
+    })
     .state('app', {
         url: "/app",
         templateUrl: "app/layout/menu-layout.html"
