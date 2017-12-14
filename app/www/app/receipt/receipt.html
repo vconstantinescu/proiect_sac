@@ -1,6 +1,15 @@
 <ion-view view-title="Receipt" name="receipt-view" class="bg-style">
-  <ion-content class="padding">
-    <img class="logo" src="img/logo2.png" style="padding-bottom: 22px">
+  <ion-content class="has-header padding">
+    <!--<img class="logo" src="img/logo2.png" style="padding-bottom: 22px">-->
 
+    <button class="button button-block button-assertive" ng-click="takePicture()">Scan Receipt</button>
+    <button class="button button-block button-assertive" ng-click="selectPicture()">Upload Receipt</button>
+
+    <div class="card" ng-show="imgSrc != undefined">
+      <div class="item item-image">
+        <img ng-src="{{imgSrc}}">
+      </div>
+    </div>
+    <button class="button button-block button-energized" ng-show="imgSrc != undefined" ng-click="receipt()">Process Receipt</button>
   </ion-content>
 </ion-view>

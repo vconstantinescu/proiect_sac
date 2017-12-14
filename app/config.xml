@@ -85,4 +85,5 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="savingsapp-188518" />
     </plugin>
+    <plugin name="cordova-plugin-camera" spec="^3.0.0" />
 </widget>

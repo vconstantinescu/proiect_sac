@@ -1,4 +1,4 @@
-angular.module("savingsApp", ["ionic"])
+angular.module("savingsApp", ["ngCordova","ionic"])
 
 .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -33,10 +33,6 @@ angular.module("savingsApp", ["ionic"])
       url: "/receipt",
       templateUrl: "app/receipt/receipt.html",
       controller: 'ReceiptController'
-    })
-    .state('app', {
-        url: "/app",
-        templateUrl: "app/layout/menu-layout.html"
-      });
+    });
   $urlRouterProvider.otherwise("/login");
 });
