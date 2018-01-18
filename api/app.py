@@ -1,5 +1,5 @@
 #!flask/bin/python
-from flask import Flask, jsonify, request
+from flask import Flask, request
 from flask_pymongo import PyMongo, ObjectId
 from bson import json_util
 
@@ -12,7 +12,6 @@ mongo = PyMongo(app)
 
 @app.route('/api/register', methods=['POST'])
 def register():
-
     user_id = mongo.db.users.insert({
         "name": request.json['name'],
         "email": request.json['email'],
@@ -22,7 +21,7 @@ def register():
     user = mongo.db.users.find_one({'_id': ObjectId(str(user_id))})
     user['_id'] = str(user['_id'])
 
-    return jsonify({"success": True, "user": user})
+    return json_util.dumps({"success": True, "user": user})
 
 
 @app.route('/api/login', methods=['POST'])
@@ -32,10 +31,10 @@ def login():
         'password': request.json['password']
     })
 
-    if len(user) == 0:
-        return jsonify({'success': False, 'error': 'Invalid credentials'})
+    if user.count() == 0:
+        return json_util.dumps({'success': False, 'error': 'Invalid credentials'})
 
-    return jsonify({'success': True, 'user': user})
+    return json_util.dumps({'success': True, 'user': user})
 
 
 @app.route('/api/product', methods=['POST'])
@@ -47,18 +46,45 @@ def product():
     })
 
     product = mongo.db.products.find_one({'_id': ObjectId(str(product_id))})
-    product['_id'] = str(product['_id'])
 
-    return jsonify({'success': True, 'product': product})
+    return json_util.dumps({'success': True, 'product': product})
 
 
-@app.route('/api/user_outgoings', methods=['POST'])
+@app.route('/api/user_expenses', methods=['POST', 'GET'])
 def user_outgoings():
-    products = mongo.db.products.find({'user_id': request.json['user_id']})
+    users = mongo.db.users.find({}, {"name": 1, "email": 1, "_id": 1})
+    products = mongo.db.products.aggregate([
+        {
+            '$group': {
+                '_id': '$user_id',
+                'priceAvg': {'$avg': '$price'},
+                'products': {
+                    '$push': {
+                        'name': '$name',
+                        'price': '$price',
+                        'user_id': '$user_id',
+                    }
+                },
+            }
+        },
+        {
+            '$project': {
+                'user': '$_id',
+                'priceAvg': '$priceAvg',
+                'products': '$products',
+                'expensive': {
+                    '$filter': {
+                        'input': '$products',
+                        'as': 'item',
+                        'cond': {'$gt': ['$$item.price', '$priceAvg']}
+                    }
+                }
+            }
+        }
+    ])
 
-    return json_util.dumps({'products': products})
+    return json_util.dumps({'products': products, 'users': users})
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
