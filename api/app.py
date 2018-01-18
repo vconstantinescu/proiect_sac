@@ -51,7 +51,7 @@ def product():
 
 
 @app.route('/api/user_expenses', methods=['POST', 'GET'])
-def user_outgoings():
+def user_expenses():
     users = mongo.db.users.find({}, {"name": 1, "email": 1, "_id": 1})
     products = mongo.db.products.aggregate([
         {
