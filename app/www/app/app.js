@@ -38,6 +38,11 @@ angular.module("savingsApp", ["ngCordova","ionic"])
       url: "/amount",
       templateUrl: "app/amount/amount.html",
       controller: 'AmountController'
-    });
+    })
+    .state('history', {
+        url: "/history",
+        templateUrl: "app/history/history.html",
+        controller: 'HistoryController'
+      });
   $urlRouterProvider.otherwise("/login");
 });

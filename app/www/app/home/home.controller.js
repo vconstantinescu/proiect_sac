@@ -10,10 +10,15 @@
 
     $scope.receipt = function () {
       $state.go("receipt");
-    }
+    };
 
+    $scope.history = function () {
+      $state.go("history");
+    };
 
-
+    $scope.expenses = function () {
+      $state.go("expenses");
+    };
   }
 })();
 
