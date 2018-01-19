@@ -33,6 +33,11 @@ angular.module("savingsApp", ["ngCordova","ionic"])
       url: "/receipt",
       templateUrl: "app/receipt/receipt.html",
       controller: 'ReceiptController'
+    })
+    .state('amount', {
+      url: "/amount",
+      templateUrl: "app/amount/amount.html",
+      controller: 'AmountController'
     });
   $urlRouterProvider.otherwise("/login");
 });
