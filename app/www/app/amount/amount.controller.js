@@ -8,7 +8,12 @@
 
   function AmountController($scope, $state, memory) {
 
-    $scope.amount = memory.get('amount');
+    if (memory.get('amount')) {
+      $scope.amount = memory.get('amount');
+    } else {
+      $scope.amount = '';
+    }
+    $scope.category = '';
 
     $scope.save = function () {
       var spendings = [];
