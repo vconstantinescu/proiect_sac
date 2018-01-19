@@ -12,12 +12,16 @@
 
     $scope.save = function () {
       var spendings = [];
+      if (angular.isArray(memory.get('spendings'))) {
+        spendings = memory.get('spendings');
+      }
       var spending = {
         amount: $scope.amount,
         category: $scope.category
       };
       spendings.push(spending);
       memory.put('spendings', spendings);
+      $state.go("history");
     }
   }
 })();

@@ -17,7 +17,7 @@
     };
 
     $scope.expenses = function () {
-      $state.go("expenses");
+      $state.go("amount");
     };
   }
 })();
