@@ -4,9 +4,9 @@
     .module('savingsApp')
     .controller('ReceiptController', ReceiptController);
 
-  ReceiptController.$inject = ['$scope','$state','$cordovaCamera', '$http'];
+  ReceiptController.$inject = ['$scope','$state','$cordovaCamera', '$http', 'Memory'];
 
-  function ReceiptController($scope, $state, $cordovaCamera, $http) {
+  function ReceiptController($scope, $state, $cordovaCamera, $http, memory) {
 
       $scope.takePicture = function () {
           var options = {
@@ -71,15 +71,14 @@
 
       $http(request)
         .success(function (response) {
-          $scope.error = response;
+          $scope.error = response.totalAmount.data;
           $scope.result = response.ParsedResults;
+          memory.put('amount', response.totalAmount.data)
+          $state.go("amount");
         })
         .error(function (response) {
             $scope.error = response;
         })
-
-       // $state.go("amount");
-
     };
   }
 })();

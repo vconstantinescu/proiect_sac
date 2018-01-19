@@ -1,0 +1,12 @@
+<ion-view view-title="Spendings" name="spendings-view" class="bg-style">
+  <ion-content class="has-header padding">
+
+    <h3>Your spendings are</h3>
+
+    <div ng-repeat="spending in spendings track by $index">
+      <p>{{spending.amount}}, {{spending.category}}</p>
+    </div>
+
+
+  </ion-content>
+</ion-view>
