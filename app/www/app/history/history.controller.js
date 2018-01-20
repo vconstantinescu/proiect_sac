@@ -11,5 +11,10 @@
     if (angular.isArray(memory.get('spendings'))) {
           $scope.spendings = memory.get('spendings');
     }
+
+
+    $scope.goHome = function () {
+      $state.go('home');
+    }
   }
 })();

@@ -53,7 +53,7 @@
         method: 'POST',
         url: 'https://api.taggun.io/api/receipt/v1/simple/encoded',
         headers: {
-          apikey: '8e5c7190fc9111e7ab51516b33cba1b5',
+          apikey: '12340fc9111e723b51516b33cba1b5',
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
@@ -73,7 +73,7 @@
         .success(function (response) {
           $scope.error = response.totalAmount.data;
           $scope.result = response.ParsedResults;
-          memory.put('amount', response.totalAmount.data)
+          memory.put('amount', response.totalAmount.data);
           $state.go("amount");
         })
         .error(function (response) {

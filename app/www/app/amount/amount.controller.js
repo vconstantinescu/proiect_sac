@@ -15,6 +15,11 @@
     }
     $scope.category = '';
 
+    function clearScope() {
+      $scope.amount = '';
+      $scope.category = '';
+    }
+
     $scope.save = function () {
       var spendings = [];
       if (angular.isArray(memory.get('spendings'))) {
@@ -26,6 +31,7 @@
       };
       spendings.push(spending);
       memory.put('spendings', spendings);
+      clearScope();
       $state.go("history");
     }
   }

@@ -4,10 +4,10 @@
     <h3>Add Spending</h3>
 
     <label class="item item-input">
-      <input type="text" ng-model="amount" placeholder="Amount">
+      <input type="text" ng-model="$parent.amount" placeholder="Amount">
     </label>
     <label class="item item-input">
-      <input type="text" ng-model="category" placeholder="Category">
+      <input type="text" ng-model="$parent.category" placeholder="Category">
     </label>
     <button class="button button-block button-energized" ng-click="save()">Save</button>
   </ion-content>
